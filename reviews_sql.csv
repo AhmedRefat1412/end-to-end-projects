@@ -1,0 +1,21 @@
+review_id,user_id,product_id,rating,comment
+1,11,13,2,This is SQL comment for product 2
+2,4,11,2,This is SQL comment for product 2
+3,11,1,2,This is SQL comment for product 17
+4,2,13,1,This is SQL comment for product 18
+5,8,6,4,This is SQL comment for product 8
+6,11,6,3,This is SQL comment for product 7
+7,18,9,3,This is SQL comment for product 10
+8,7,16,3,This is SQL comment for product 8
+9,5,6,1,This is SQL comment for product 3
+10,20,16,3,This is SQL comment for product 15
+11,7,17,2,This is SQL comment for product 16
+12,15,8,3,This is SQL comment for product 13
+13,17,19,1,This is SQL comment for product 2
+14,5,17,4,This is SQL comment for product 9
+15,5,1,4,This is SQL comment for product 8
+16,20,13,2,This is SQL comment for product 7
+17,10,3,2,This is SQL comment for product 15
+18,10,20,5,This is SQL comment for product 15
+19,11,19,4,This is SQL comment for product 8
+20,9,8,4,This is SQL comment for product 15
