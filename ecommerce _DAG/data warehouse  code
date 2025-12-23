@@ -1,0 +1,33 @@
+CREATE TABLE dim_users (
+    user_key SERIAL PRIMARY KEY,
+    user_id INT UNIQUE,
+    name VARCHAR(100),
+    email VARCHAR(100),
+    age INT,
+    signup_date DATE
+);
+CREATE TABLE dim_products (
+    product_key SERIAL PRIMARY KEY,
+    product_id INT UNIQUE,
+    name VARCHAR(100),
+    category VARCHAR(50),
+    price NUMERIC(10,2)
+);
+CREATE TABLE fact_orders (
+    order_key SERIAL PRIMARY KEY,
+    order_id INT ,
+    user_key INT REFERENCES dim_users(user_key),
+    product_key INT REFERENCES dim_products(product_key),
+    quantity INT,
+    total NUMERIC(10,2),
+
+);
+CREATE TABLE fact_reviews (
+    review_key SERIAL PRIMARY KEY,
+    review_id INT UNIQUE,
+    user_key INT REFERENCES dim_users(user_key),
+    product_key INT REFERENCES dim_products(product_key),
+    rating INT,
+    comment TEXT,
+    review_date DATE
+);
