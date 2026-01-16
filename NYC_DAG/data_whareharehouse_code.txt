@@ -1,0 +1,94 @@
+use NYC_DW;
+show tables;
+--------------------------
+-- 1- Dim_Borough
+create table Dim_Borough(
+    borough_id int primary key,
+    borough_name string
+);
+----------------------------
+-- 2- Dim_Complaint
+create table Dim_Complaint(
+    complaint_key int primary key,
+    complaint_name string
+);
+----------------------------
+--3- Dim_Vehicle_type
+create table Dim_Vehicle_Type(
+    vehicle_type_id int primary key,
+    vehicle_name string
+);
+----------------------------
+-- 4- Dim_Weather
+create table Dim_Weather(
+    weather_key int primary key,
+    weather_condition string
+);
+----------------------------
+-- 5- Dim_Contributing
+create table Dim_Contributing(
+    factor_key int primary key,
+    contributing_factor string
+);
+----------------------------
+-- 6- Dim_Traffic_Volume_Level
+create table Dim_Traffic_Volume_Level(
+    volume_level_key int primary key,
+    volume_level string
+);
+----------------------------
+-- 7- Dim_Status
+create table Dim_Status(
+    status_key int primary key,
+    status string
+);
+----------------------------
+-- 8- Dim_Date
+create table Dim_Date(
+    date_key int primary key,
+    full_date date ,
+    day_name string ,
+    month_name string
+);
+
+----------------------------
+-- 9- Dim_Street
+create table Dim_Street(
+    street_id int primary key,
+    street_name string,
+    number_park_lanes int ,
+    number_travel_lanes int ,
+    street_width int ,
+    bikes_lane int,
+    snow_priority string 
+);
+
+--------------------------------------------------
+-- 1- Fact_Complaint
+create table Fact_Complaint(
+    complaint_311_id string primary key,
+    date_key int references Dim_Date(date_key),
+    borough_id int references Dim_Borough(borough_id),
+    status_key int references Dim_Status(status_key),
+    street_id int references Dim_Street(street_id),
+    volume_level_key int references Dim_Traffic_Volume_Level(volume_level_key),
+    complaint_key int references Dim_Complaint(complaint_key),
+    weather_key int references Dim_Weather(weather_key),
+    severity string ,
+    pepole_injuries int ,
+    pepole_killed int ,
+    response_time_minutes int ,
+    vehicles_involved int 
+);
+
+create table Fact_Collisions (
+collision_id int primary key ,
+date_key int references Dim_Date(date_key),
+borough_id int references Dim_Borough(borough_id),
+vehicle_type_id int references Dim_Vehicle_Type(vehicle_type_id),
+street_id int references Dim_Street(street_id),
+factor_key int references Dim_Contributing(factor_key),
+crash_time timestamp,
+persons_injured int ,
+persons_killed int 
+)
