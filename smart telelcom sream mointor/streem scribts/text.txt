@@ -1,0 +1,4 @@
+python "eniveronmental metrics.py"
+python "Hardware&System metrics .py"
+python "network metrics.py"
+python "Radio&Cell metrics .py"
